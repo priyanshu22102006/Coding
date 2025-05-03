@@ -1,0 +1,15 @@
+#include<stdio.h>
+#include<math.h>
+int main(){
+    int num;
+    scanf("%d",&num);
+    for (int i = 0 ; i <= num ; i++ ){
+        for(int j = 2 ; j <= i ; j++){
+            if(i%j == 0){
+                printf("%d ",i);
+                break;
+            }
+        }
+    }
+    return 0;
+}

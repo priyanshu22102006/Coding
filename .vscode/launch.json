@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "type": "cppdbg",
+            "request": "launch",
+            "name": "Launch C Program",
+            "program": "${workspaceFolder}/${input:programName}",
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": true,
+            "preLaunchTask": "build"
+        }
+    ],
+    "inputs": [
+        {
+            "type": "promptString",
+            "id": "sourceFile",
+            "description": "Enter the relative path to the C source file (e.g., practice/hello.c)"
+        },
+        {
+            "type": "promptString",
+            "id": "outputFile",
+            "description": "Enter the desired name for the output executable (e.g., practice/hello.exe)"
+        }
+    ]
+}

@@ -1,0 +1,5 @@
+name = input()
+var = input("Which part do you want to replace: ")
+avar = input("Enter new string : ")
+new = name.replace(var,avar)
+print(new)
