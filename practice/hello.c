@@ -2,5 +2,5 @@
 #include <math.h>
 int main()
 {
-    printf("%f",pow(9,0.5));
+    if(ch == 'a' || ch == 'e')
 }
