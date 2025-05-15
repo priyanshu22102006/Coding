@@ -1,25 +1,50 @@
 {
-    "configurations": [
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug C/C++ on Linux",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/${input:programNameLinux}",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "setupCommands": [
         {
-            "type": "cppdbg",
-            "request": "launch",
-            "name": "Launch C Program",
-            "program": "${workspaceFolder}/${input:programName}",
-            "cwd": "${workspaceFolder}",
-            "stopAtEntry": true,
-            "preLaunchTask": "build"
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
         }
-    ],
-    "inputs": [
-        {
-            "type": "promptString",
-            "id": "sourceFile",
-            "description": "Enter the relative path to the C source file (e.g., practice/hello.c)"
-        },
-        {
-            "type": "promptString",
-            "id": "outputFile",
-            "description": "Enter the desired name for the output executable (e.g., practice/hello.exe)"
-        }
-    ]
+      ],
+      "preLaunchTask": "build-linux"
+    },
+    {
+      "name": "Debug C/C++ on Windows",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}\\${input:programNameWindows}",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "preLaunchTask": "build-windows"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "programNameLinux",
+      "type": "promptString",
+      "description": "Enter the output filename (e.g., a.out or path/to/output)"
+    },
+    {
+      "id": "programNameWindows",
+      "type": "promptString",
+      "description": "Enter the output filename (e.g., a.exe or path\\to\\output.exe)"
+    }
+  ]
 }
