@@ -1,0 +1,6 @@
+# Ignore full .vscode folder
+.vscode/
+
+# OR: Ignore all except settings.json (optional)
+# .vscode/*
+# !.vscode/settings.json
