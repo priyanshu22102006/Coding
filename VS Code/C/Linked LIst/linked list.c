@@ -25,7 +25,7 @@ void main(){
         scanf("%d",&choise);
     }
     temp = head;
-    while(temp!=0){
+    while(temp!=NULL){
         count ++;
         printf("%d ",temp->data);
         temp = temp->next;
@@ -51,7 +51,7 @@ void main(){
                 printf("Enter data :");
                 scanf("%d",&newNode->data);
                 temp = head;
-                while(temp->next!=0){
+                while(temp->next!=NULL){
                     temp=temp->next;
                 }
                 newNode->next = NULL;
@@ -110,7 +110,7 @@ void main(){
                 head = head->next;
                 free(temp);
             break;
-            case 6:
+            case 6: {
                 struct node * prevnode;
                 int loop=1;
                 temp = prevnode = head;
@@ -126,6 +126,7 @@ void main(){
                 }
                 prevnode->next=NULL;
                 free(temp);
+            }
             break;
             case 7:
                 printf("Enter a ");
@@ -174,9 +175,10 @@ void main(){
                 else{
                     printf("Invalid Input..!");
                 }
+            break;
             case 9:
                 temp = head;
-                while(temp!=0){
+                while(temp!=NULL){
                     printf("%d ",temp->data);
                     temp = temp->next;
                 }
