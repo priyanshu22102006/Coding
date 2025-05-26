@@ -15,9 +15,9 @@ void insertatend();
 void insertatpos();
 void insertafteraposition();
 void deleteatbeg();
-// void deleteatend();
-// void deleteatpos();
-// void deleteafteraposition();
+void deleteatend();
+void deleteatpos();
+void reverse();
 void display();
 
 int main(){
@@ -40,7 +40,7 @@ int main(){
     printf("5) Deleting at the beginning\n");
     printf("6) Deleting at the end\n");
     printf("7) Deleting at a position\n");
-    printf("8) Deleting after a position\n");
+    printf("8) Reverse\n");
     printf("9) Display\n");
     printf("0) Exit\n");
     printf("-------------------------------------\n");
@@ -53,9 +53,9 @@ int main(){
             case 3: insertatpos(); break;
             case 4: insertafteraposition(); break;
             case 5: deleteatbeg(); break;
-            // case 6: deleteatend(); break;
-            // case 7: deleteatpos(); break;
-            // case 8: deleteafteraposition(); break;
+            case 6: deleteatend(); break;
+            case 7: deleteatpos(); break;
+            case 8: reverse(); break;
             case 9: display(); break;
             case 0: printf("Exiting...\n"); break;
             default: printf("Invalid choice\n");
@@ -158,11 +158,60 @@ void insertafteraposition(){
 
 void deleteatbeg(){
     struct node *temp;
-    head = temp;
-    head = temp->next;
-    head->prev = NULL;
-    temp->next = NULL;
-    free(temp);
+    temp = head; 
+    if (head == NULL){
+        printf("the list is empty");
+    }
+    else{
+        head = head->next;
+        head->prev = NULL;
+        free(temp);
+    }
+}
+
+void deleteatend(){
+    struct node *temp;
+    temp = tail;
+    if (tail == NULL){
+        printf("the list is empty");
+    }
+    else{
+        tail = tail->prev;
+        tail->next = NULL;
+        free(temp);
+    } 
+}
+
+void deleteatpos(){
+    struct node *temp = head;
+    int position,i = 1;
+    printf("Enter which position u want to insert :");
+    scanf("%d",&position);
+    if(position >= 1){ 
+        while(i < position){
+            temp = temp->next;
+            i++;
+        }
+        temp->prev->next = temp->next;
+        temp->next->prev = temp->prev;
+        free(temp);
+    } 
+    else{
+        printf("Wrong position!!"); 
+    }
+}
+
+void reverse(){
+    struct node *temp;
+    temp = head;
+    head = tail;
+    tail = head;
+    temp = head;
+    while(temp != NULL){
+        printf("%d ",temp->data);
+        temp = temp->prev;
+    }
+    printf("\n");
 }
 
 void display(){
