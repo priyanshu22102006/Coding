@@ -19,6 +19,7 @@ void deleteatend();
 void deleteatpos();
 void reverse();
 void display();
+int length();
 
 int main(){
     int choice = 1;
@@ -79,15 +80,145 @@ void create(){
     tail->next = head;
 }
 
+void insertatbeg(){
+    Node *newnode = (Node *)malloc(sizeof(Node));
+    printf("Enter Data : ");
+    scanf("%d",&newnode->data);
+    newnode->next = head;
+    head = newnode;
+    tail->next = newnode;
+}
+
+void insertatend(){
+    Node *newnode = (Node *)malloc(sizeof(Node));
+    printf("Enter Data : ");
+    scanf("%d",&newnode->data);
+    tail->next = newnode;
+    newnode->next = head;
+    tail = newnode;
+}
+
+void insertatpos(){
+    Node *temp = head, *newnode = (Node *)malloc(sizeof(Node));
+    int position, i = 1, size = length();
+    printf("Enter Position : ");
+    scanf("%d",&position);
+    if(position > 1 && position <= size){
+        while(i < position-1){
+            temp = temp->next;
+            i++;
+        }
+        printf("Enter Data :");
+        scanf("%d",&newnode->data); 
+        newnode->next = temp->next;
+        temp->next = newnode;
+    } 
+    else if(position == 1){
+        insertatbeg();
+    }
+    else{
+        printf("Wrong position!!"); 
+    }
+}
+
+void insertafteraposition(){
+    Node *temp = head, *newnode = (Node *)malloc(sizeof(Node));
+    int position, i = 1, size = length();
+    printf("Enter position :");
+    scanf("%d",&position);
+    if(position >= 1 && position < size){
+        while(i < position){
+            temp = temp->next;
+            i++;
+        }
+        printf("Enter Data :");
+        scanf("%d",&newnode->data);
+        newnode->next = temp->next;
+        temp->next = newnode;
+    }
+    else if(position == size){
+        insertatend();
+    }
+    else printf("Wrong Position!!");
+}
+
+void deleteatbeg(){
+    Node *temp = head;
+    head = head->next;
+    tail->next = head;
+    free(temp);
+}
+
+void deleteatend(){
+    Node *temp = tail;
+    while(tail->next != temp){
+        tail = tail->next;
+    }
+    tail->next = head;
+    free(temp);
+}
+
+void deleteatpos(){
+    int position, i = 1, size = length();
+    printf("Enter position :");
+    scanf("%d",&position);
+    if(position < 1 || position > size){
+        printf("Wrong Position!!");
+        return;
+    }
+    if(position == 1){
+        deleteatbeg();
+        return;
+    }
+    Node *temp = head;
+    Node *prev = NULL;
+    while(i < position){
+        prev = temp;
+        temp = temp->next;
+        i++;
+    }
+    prev->next = temp->next;
+    if(temp == tail) // If deleting the last node, update tail
+        tail = prev;
+    free(temp);
+}
+
+void reverse(){
+    Node *prev, *current = tail->next, *next = current->next;
+    if(head == NULL || head->next == head) return; // Empty or single node case
+    else{
+        while(current != tail){
+            prev = current;
+            current = next;
+            next = current->next;
+            current->next = prev;
+        }
+        next->next = tail; // Last node points to the new head
+        head = tail; // Update head to the old tail
+        tail = next; // Update tail to the old head
+    }
+}
+
 void display(){
     Node *temp;
     if(tail == NULL) printf("The linked list is empty");
     else{
         temp = tail->next;
         while(temp->next != tail->next){
-            printf("%d",temp->data);
+            printf("%d ",temp->data);
             temp = temp->next;
         }
-        printf("%d",temp->data);
+        printf("%d ",temp->data);
     }
+    printf("\n");
+}
+
+int length(){
+    int size = 1;
+    Node *temp = head;
+    while(temp->next != head){
+        size++;
+        temp = temp->next;
+    }
+    return size;
 }
