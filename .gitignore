@@ -1,7 +1,36 @@
-# Ignore full .vscode folder
+# Ignore full .vscode folder (editor configs)
 .vscode/
-venv
 
-# OR: Ignore all except settings.json (optional)
-# .vscode/*
-# !.vscode/settings.json
+# Python virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Python cache & compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Backup & temporary files
+*.swp
+*~
+*.bak
+*.tmp
+*.temp
+
+# Secrets (never commit!)
+.env
+*.env
+.env.*
