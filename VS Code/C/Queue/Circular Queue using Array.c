@@ -32,6 +32,15 @@ void dequeue(int arr[]){
     }
 }
 
+void peek(int arr[]){
+    if(front == -1 && rear == -1){
+        printf("Queue is empty!!\n");
+    }
+    else{
+        printf("Front element is %d \n", arr[front]);
+    }
+}
+
 void display(int arr[]){
     if(front == -1 && rear == -1){
         printf("Queue is empty!!\n");
@@ -43,10 +52,10 @@ void display(int arr[]){
             printf("%d ",arr[i]);
             i = (i+1) % size;
         }
-        printf("%d ",arr[rear]);
+        printf("%d \n",arr[rear]);
     }
 }
-
+ 
 int main(){
     printf("--------------------------------------\n");
     printf("----------------QUEUE-----------------\n");
@@ -67,7 +76,7 @@ int main(){
                 dequeue(queue);
                 break;
             case 3:
-                // peek();
+                peek(queue);
                 break;
             case 4:
                 display(queue);
