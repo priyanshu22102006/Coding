@@ -10,13 +10,13 @@ Node *head,*tail = NULL;
 
 void enqueue();
 void dequeue();
-// void peek();
+void peek();
 void display();
 
 int main(){
     printf("--------------------------------------\n");
     printf("----------------QUEUE-----------------\n");
-    printf("1. ENQUEUE \n2. DEQUEUE \n3. PEEK \n4. DISPLAY \n0. EXIT\n");
+    printf("|1. ENQUEUE \n|2. DEQUEUE \n|3. PEEK \n|4. DISPLAY \n|0. EXIT\n");
     printf("--------------------------------------\n");
     int choice = 1;
     while(choice!=0){
@@ -30,7 +30,7 @@ int main(){
                 dequeue();
                 break;
             case 3:
-                // peek();
+                peek();
                 break;
             case 4:
                 display();
