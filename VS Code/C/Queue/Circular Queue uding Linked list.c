@@ -65,8 +65,8 @@ void dequeue(){
         printf("Queue is EMPTY!!\n");
     }
     else if(head == tail){
-        head = tail;
         free(temp);
+        head = tail = NULL;
     }
     else{
         head = head->next;
@@ -87,10 +87,10 @@ void peek(){
 void display(){
     if(head != NULL){
         Node* temp = head;
-        while(temp->next != head) {
-            printf("%d ",temp->data);
+        do {
+            printf("%d ", temp->data);
             temp = temp->next;
-        }
+        } while(temp != head);
         printf("\n");
     }
     else printf("Queue is EMPTY!!\n");
