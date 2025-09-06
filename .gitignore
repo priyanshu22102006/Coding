@@ -38,13 +38,6 @@ Thumbs.db
 # Ignore everything by default
 *
 
-# Allow only C and C++ source files
-!*.c
-!*.cpp
-
-# Allow this .gitignore itself
-!.gitignore
-
 # Ignore common build artifacts
 *.o
 *.out
