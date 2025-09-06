@@ -34,3 +34,29 @@ Thumbs.db
 .env
 *.env
 .env.*
+
+# Ignore everything by default
+*
+
+# Allow only C and C++ source files
+!*.c
+!*.cpp
+
+# Allow this .gitignore itself
+!.gitignore
+
+# Ignore common build artifacts
+*.o
+*.out
+*.exe
+*.obj
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+*.class
+*.jar
+
+# Ignore executables without extension (Linux builds)
+[a-zA-Z0-9]*
